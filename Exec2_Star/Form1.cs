@@ -59,17 +59,13 @@ namespace Exec2_Star
 			{
 				throw new Exception("列數必須整數");
 			}
-			if (row <= 0)
-			{
-				throw new Exception("列數需大於0");
-			}
-			if (row > 11 || row < 0)
-			{
-				throw new Exception("只能輸入1~10");
-			}
-			else
+			if (row >0&&row<11)
 			{
 				return row;
+			}
+			else 
+			{
+				throw new Exception("只能介於1~10");
 			}
 		}
         private string BecomeLeftTriangle(int row) 
