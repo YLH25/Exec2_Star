@@ -22,11 +22,11 @@ namespace Exec2_Star
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+       private void button1_Click(object sender, EventArgs e)
         {
             //取得列數
             string input = GetRow();
-            //    //列數是否<=0或整數
+            //列數是否<=0或整數
             int row = 0;
             try
             {
@@ -37,7 +37,7 @@ namespace Exec2_Star
                 MessageBox.Show(ex.Message);
             }
             //    //星號三角生成
-            string result=BecomeStarAnya(row);
+            string result= BecomeLeftTriangle(row);
 
 
 
@@ -54,20 +54,21 @@ namespace Exec2_Star
         private int CanBeCount(string input)
         {
             bool isInt = int.TryParse(input, out int row);
-            if (row <= 0)
-            {
-                throw new Exception("列數需大於0");
-            }
-            if (isInt = false)
+            
+            if (isInt != true)
             {
                 throw new Exception("列數必須整數");
-            }
-            else
+			}
+			if (row <= 0)
+			{
+				throw new Exception("列數需大於0");
+			}
+			else
             {
                 return row;
             }
         }
-        private string BecomeLeftTNO(int row) 
+        private string BecomeLeftTriangle(int row) 
         {
             string result = string.Empty;
             for (int i = 1; i <= row; i++)
@@ -80,12 +81,63 @@ namespace Exec2_Star
 
         private void button2_Click(object sender, EventArgs e)
         {
+			
+			string input = GetRow();
 
-        }
+			int row = 0;
+			try
+			{
+				row = CanBeCount(input);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+			
+			string result = BecomeRightTriangle(row);
 
-        private void button3_Click(object sender, EventArgs e)
+			textShow.Text = result;
+			labelShow.Text = result;
+		}
+		private string BecomeRightTriangle(int row)
+		{
+			string result = string.Empty;
+			for (int i = 1; i <= row; i++)
+			{
+				result += new string(' ', row-i)+new string('*', i) + "\r\n";
+			}
+			return result;
+		}
+		private void button3_Click(object sender, EventArgs e)
         {
 
-        }
+			
+			string input = GetRow();
+			
+			int row = 0;
+			try
+			{
+				row = CanBeCount(input);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+			
+			string result = BecomeTriangle(row);
+
+			textShow.Text = result;
+			labelShow.Text = result;
+
+		}
+		private string BecomeTriangle(int row)
+		{
+			string result = string.Empty;
+			for (int i = row; i >0; i--)
+			{
+                result += new string(' ', i-1) + new string('*', row - i) + "*\r\n";
+			}
+			return result;
+		}
     }
 }
