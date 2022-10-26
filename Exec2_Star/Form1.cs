@@ -52,10 +52,10 @@ namespace Exec2_Star
             return input;
         }
         private int CanBeCount(string input)
-        {
-            bool isInt = int.TryParse(input, out int row);
-            
-            if (isInt != true)
+		{
+			bool isInt = int.TryParse(input, out int row);
+
+			if (isInt != true)
 			{
 				throw new Exception("列數必須整數");
 			}
@@ -63,7 +63,7 @@ namespace Exec2_Star
 			{
 				throw new Exception("列數需大於0");
 			}
-			if (row > 11 || row < 0) 
+			if (row > 11 || row < 0)
 			{
 				throw new Exception("只能輸入1~10");
 			}
@@ -71,6 +71,7 @@ namespace Exec2_Star
 			{
 				return row;
 			}
+		}
         private string BecomeLeftTriangle(int row) 
         {
             string result = string.Empty;
